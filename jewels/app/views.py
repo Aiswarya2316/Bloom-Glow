@@ -57,7 +57,7 @@ def register(req):
 
     if req.method=='POST':
         name1=req.POST['name']
-        email2=req.POST['email']
+        email2=req.POST['Email']
         phonenumber3=req.POST['phonenumber']
         location4=req.POST['location']
         password5=req.POST['password']
