@@ -79,4 +79,4 @@ def userhome(req):
 
 def adminhome(req):
     
-    return render(req,'mobileappliances/adminhome.html')
+    return render(req,'shophome.html')
