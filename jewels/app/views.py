@@ -21,7 +21,7 @@ def login(req):
     if 'user' in req.session:
         return redirect(userhome)
     if 'shop' in req.session:
-        return redirect(adminhome)
+        return redirect(shophome)
 
     if req.method=='POST':
         email=req.POST['Email']
@@ -36,7 +36,7 @@ def login(req):
                 auth.login(req,shop)
                 req.session['shop']=email
 
-                return redirect(adminhome)
+                return redirect(shophome)
 
 
             messages.warning(req, "INVALID INPUT !")
@@ -77,6 +77,6 @@ def userhome(req):
         return redirect(login)
 
 
-def adminhome(req):
+def shophome(req):
     
     return render(req,'shophome.html')

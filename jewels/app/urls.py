@@ -5,5 +5,5 @@ path('',views.login),
 path('logout',views.logout),
 path('register',views.register),
 path('userhome',views.userhome),
-path('adminhome',views.adminhome),
+path('shophome',views.shophome),
 ]
