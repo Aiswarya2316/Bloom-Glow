@@ -11,6 +11,16 @@ class Register(models.Model):
 
     def __str__(self):
         return self.name
+
+class Shopreg(models.Model):
+    Email = models.EmailField(unique=True)
+    name = models.TextField()
+    phonenumber = models.IntegerField()
+    password = models.IntegerField()
+    location= models.TextField()
+
+    def __str__(self):
+        return self.name
     
 class Product(models.Model):
     name = models.TextField()

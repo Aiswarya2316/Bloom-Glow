@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-details {
+            margin-top: 20px;
+        }
+        .product-details h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .product-details p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .product-details .price {
+            font-size: 20px;
+            color: #4CAF50;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="product-image.jpg" alt="Product Image" class="product-image">
+        <div class="product-details">
+            <h1>Product Name</h1>
+            <p class="price">$99.99</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+            <a href="/products" class="back-link">Back to Products</a>
+        </div>
+    </div>
+</body>
+</html>
