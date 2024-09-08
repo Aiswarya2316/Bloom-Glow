@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="">NAME</label>
+    <input type="text"  name="name" value="{{data.name}}" placeholder="Enter your name"><br><br>
+        <label for="">price</label>
+    <input type="number" name="price" value="{{data.price}}" placeholder="Enter your price"><br><br>
+        <label for="">offerprice</label>
+    <input type="number" name="offerprice" value="{{data.offerprice}}" placeholder="Enter your offerprice"><br><br>
+    <label for="">quantity</label>
+    <input type="number" name="quantity" value="{{data.quantity}}" placeholder="Enter your quantity"><br><br>
+        <label for=""></label>
+    <input type="submit" value="submit" ><br>
+    </form> 
+    <div>
+        <p>
+            <a href="../delete/{{data.pk}}">Delete</p>
+    </div>
+</body>
+</html>

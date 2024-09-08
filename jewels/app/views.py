@@ -22,6 +22,9 @@ def login(req):
         return redirect(userhome)
     if 'admin' in req.session:
         return redirect(adminhome)
+    if 'shop' in req.session:
+        return redirect(shophome)
+    
 
     if req.method=='POST':
         email=req.POST['Email']
@@ -37,6 +40,13 @@ def login(req):
                 req.session['admin']=email
 
                 return redirect(adminhome)
+            
+            else:
+                data=Shopreg.objects.get(Email=email,password=password)
+                req.session['shop']=data.Email
+
+                return redirect(shophome)
+
 
 
             messages.warning(req, "INVALID INPUT !")
@@ -50,6 +60,8 @@ def logout(req):
         del req.session['user']
     if 'admin' in req.session:
         del req.session['admin']
+    if 'shop' in req.session:
+        del req.session['shop']
     return redirect(login)
 
 
@@ -104,9 +116,37 @@ def shophome(req):
     return render(req,'shophome.html')
 
 def addpro(req):
-    
+    if req.method=='POST':
+        name = req.POST['name']
+        discription = req.POST['discription']
+        price = req.POST['price']
+        category = req.POST['category']
+        quantity = req.POST['quantity']
+        offerprice = req.POST['offerprice']
+        image = req.FILES['image']
+        data=Product.objects.create(name=name,discription=discription,price=price,category=category,quantity=quantity,offerprice=offerprice,image=image)
+        data.save()
+        return redirect(viewpro)
     return render(req,'addpro.html')
 
+    
 def viewpro(req):
+    data=Product.objects.all()
+    return render(req,'viewpro.html',{'data':data})    
 
-    return render(req,'viewpro.html')    
+def edit(req,id):
+    data=Product.objects.get(pk=id)
+    if req.method=='POST':
+        name1=req.POST['name']
+        price=req.POST['price']
+        offerprice=req.POST['offerprice']
+        quantity=req.POST['quantity']
+        image=req.POST['image']
+        Product.objects.filter(pk=id).update(name=name1,price=price,offerprice=offerprice,quantity=quantity,image=image)
+        return redirect(viewpro)
+    return render(req,'edit.html',{'data':data})
+
+def delete(req,id):
+    data=Product.objects.get(pk=id)
+    data.delete()
+    return redirect(viewpro) 
