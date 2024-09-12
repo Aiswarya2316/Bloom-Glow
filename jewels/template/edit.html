@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="">NAME</label>
     <input type="text"  name="name" value="{{data.name}}" placeholder="Enter your name"><br><br>
@@ -16,6 +16,8 @@
     <input type="number" name="offerprice" value="{{data.offerprice}}" placeholder="Enter your offerprice"><br><br>
     <label for="">quantity</label>
     <input type="number" name="quantity" value="{{data.quantity}}" placeholder="Enter your quantity"><br><br>
+    <label for="">image</label>
+    <input type="file" name="image">
         <label for=""></label>
     <input type="submit" value="submit" ><br>
     </form> 

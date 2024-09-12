@@ -91,7 +91,7 @@ def shopregister(req):
         location4=req.POST['location']
         password5=req.POST['password']
         try:
-            data=Shopreg.objects.create(name=name1,email=email2,phonenumber=phonenumber3,location=location4,password=password5)
+            data=Shopreg.objects.create(name=name1,Email=email2,phonenumber=phonenumber3,location=location4,password=password5)
             data.save()
             return redirect(login)
         except:
@@ -141,8 +141,16 @@ def edit(req,id):
         price=req.POST['price']
         offerprice=req.POST['offerprice']
         quantity=req.POST['quantity']
-        image=req.POST['image']
-        Product.objects.filter(pk=id).update(name=name1,price=price,offerprice=offerprice,quantity=quantity,image=image)
+        image=req.FILES.get('image')
+        print(type(image))
+        if image:
+
+         Product.objects.filter(pk=id).update(name=name1,price=price,offerprice=offerprice,quantity=quantity)
+         data=Product.objects.get(pk=id)
+         data.image=image
+         data.save()
+        else:
+            Product.objects.filter(pk=id).update(name=name1,price=price,offerprice=offerprice,quantity=quantity)
         return redirect(viewpro)
     return render(req,'edit.html',{'data':data})
 
