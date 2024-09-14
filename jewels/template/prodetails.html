@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {margin:0;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="../userhome">Home</a></li>
+  <li><a href="../userviewproduct">product</a></li>
+  <li><a href="../cart">Add to Cart</a></li>
+  <li><a href="../logout">logout</a></li>
+</ul>
+
+<div style="padding:10px;margin-top:15px;background-color:#82dcd1;">
+  <div class="card">
+    <img src="{{data.image.url}}" alt="" style="width:500px">
+    <h1>{{data.name}}</h1>
+    <p>{{data.price}}</p>
+    <p>{{data.discription}}</p>
+    <!-- <div style="margin: 24px 0;">
+      <a href="#"><i class="fa fa-dribbble"></i></a> 
+      <a href="#"><i class="fa fa-twitter"></i></a>  
+      <a href="#"><i class="fa fa-linkedin"></i></a>  
+      <a href="#"><i class="fa fa-facebook"></i></a> 
+    </div> -->
+    <p>
+      <a href="../buy">Buy</p>
+  </div>
+</div>
+
+</body>
+</html>
+
+

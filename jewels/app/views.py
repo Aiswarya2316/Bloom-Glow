@@ -27,22 +27,22 @@ def login(req):
     
 
     if req.method=='POST':
-        email=req.POST['Email']
+        Email=req.POST['Email']
         password=req.POST['password']
         try:
-            data=Register.objects.get(Email=email,password=password)
+            data=Register.objects.get(Email=Email,password=password)
             req.session['user']=data.Email
             return redirect(userhome)
         except:
-            admin=auth.authenticate(username=email,password=password)
+            admin=auth.authenticate(username=Email,password=password)
             if admin is not None:
                 auth.login(req,admin)
-                req.session['admin']=email
+                req.session['admin']=Email
 
                 return redirect(adminhome)
             
             else:
-                data=Shopreg.objects.get(Email=email,password=password)
+                data=Shopreg.objects.get(Email=Email,password=password)
                 req.session['shop']=data.Email
 
                 return redirect(shophome)
@@ -158,3 +158,36 @@ def delete(req,id):
     data=Product.objects.get(pk=id)
     data.delete()
     return redirect(viewpro) 
+
+
+###profile of user
+def profile(req):
+    if 'user' in req.session:
+        # data=Register.objects.get(Email=req.session['user'])
+        return render(req,'userprofile.html',{'data':get_usr(req)})
+    else:
+        return redirect(login)
+    
+
+###profile update
+def upload(req):
+    if 'user' in req.session:
+        data=Register.objects.get(Email=req.session['user'])
+        if req.method=='POST':
+            name=req.POST['name']
+            phonenumber=req.POST['phonenumber']
+            location=req.POST['location']
+            Register.objects.filter(Email=req.session['user']).update(name=name,phonenumber=phonenumber,location=location)
+            return redirect(profile)
+        return render(req,'updateprofile.html',{'data':data})
+
+    else:
+       return redirect(login)
+    
+def userviewproduct(req):
+    data=Product.objects.all()
+    return render(req,'userviewproduct.html',{'data':data})
+
+def prodetails(req,id):
+    data=Product.objects.get(pk=id)
+    return render(req,'prodetails.html',{'data':data})
