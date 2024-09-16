@@ -191,3 +191,53 @@ def userviewproduct(req):
 def prodetails(req,id):
     data=Product.objects.get(pk=id)
     return render(req,'prodetails.html',{'data':data})
+
+
+def user_cart(req,id):
+    if 'user' in req.session:
+        product=Product.objects.get(pk=id)
+        user=get_usr(req)
+        qty=1
+        try:
+            dtls=cart.objects.get(product=product,user=user)
+            dtls.quantity+=1
+            dtls.save()
+        except:
+            data=cart.objects.create(product=product,user=user,quantity=qty)
+            data.save()
+        return redirect(user_view_cart)
+    else:
+        return redirect(login)
+    
+def user_view_cart(req):
+    if 'user' in req.session:
+        data=cart.objects.filter(user=get_usr(req))
+        return render(req,'addtocart.html',{'data':data})
+def qty_incri(req,id):
+    data=cart.objects.get(pk=id)
+    data.quantity+=1
+    data.save()
+    return redirect(user_view_cart)
+
+def qty_decri(req,id):
+    data=cart.objects.get(pk=id)
+    if data.quantity>1:
+        data.quantity-=1
+        data.save()
+    return redirect(user_view_cart)
+
+def buynow(req,id):
+     if 'user' in req.session:
+        cart_product=cart.objects.get(pk=id)
+        user=get_usr(req)
+        quantity=cart_product.quantity
+        date=datetime.datetime.now().strftime("%x")
+        price=cart_product.product.price
+        order=Buy.objects.create(product=cart_product.product,user=user,quantity=quantity,date_of_buying=date,price=price)
+        order.save()
+        return redirect(user_view_cart)
+     
+def deleteitem(req,id):
+    data=cart.objects.get(pk=id)
+    data.delete()
+    return redirect(user_view_cart)

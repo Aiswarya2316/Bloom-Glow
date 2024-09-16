@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       
+     </div>
+     {% for i in data %}
+         <div class="card mb-4">
+           <div class="card-body text-center">
+             <img src="{{i.product.image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
+             <h5 class="my-3">Product name : {{i.product.name}}</h5>
+             <p class="text-muted mb-1">price : {{i.product.price}}</p>
+             <a href="../qty_incri/{{i.pk}}" class="btn">+</a><p class="text-muted mb-4">{{i.quantity}}</p>  
+             <a href="../qty_decri/{{i.pk}}" class="btn">-</a>
+             
+           
+             <div class="d-flex justify-content-center mb-2">
+     
+               <!-- <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-primary" data-mdb-button-initialized="true">Details</button>
+               <button type="button" data-mdb-button-init="" data-mdb-ripple-init="" class="btn btn-outline-primary ms-1" data-mdb-button-initialized="true">Edit</button> -->
+               <a href="../buynow/{{i.pk}}">Buy now</a>
+               <a href="../deleteitem/{{i.pk}}">Delete</a>
+     
+             </div>
+           </div>
+         </div>
+         {% endfor %}
+</body>
+</html>

@@ -46,16 +46,17 @@ class cart(models.Model):
         return self.quantity * self.product.price
     
 class Buy(models.Model):
-    productid = models.IntegerField()
-    user = models.TextField()
-    date_of_buying = models.IntegerField()
-    payment_status = models.IntegerField()
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    user = models.ForeignKey(Register,on_delete=models.CASCADE)
+    date_of_buying = models.TextField()
+    payment_status = models.BooleanField(default=False)
     quantity = models.IntegerField()
     price = models.IntegerField()
-    delivery_not = models.TextField()
+    del_boy=models.BooleanField(default=False)
+
     
     def __str__(self):
-        return self.user
+        return self.product.name
     
 class Product_quantity(models.Model):
     productid = models.IntegerField()
