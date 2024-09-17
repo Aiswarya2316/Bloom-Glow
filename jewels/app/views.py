@@ -265,6 +265,8 @@ def delregister(req):
     print(delregister)
 
 
+
+
 def viewshop(req):
     data=Shopreg.objects.all()
     return render(req,'viewshop.html',{'data':data})
