@@ -22,6 +22,10 @@ path('qty_incri/<int:id>',views.qty_incri),
 path('qty_decri/<int:id>',views.qty_decri),
 path('buynow/<int:id>',views.buynow),
 path('deleteitem/<int:id>',views.deleteitem),
+path('orderdetails',views.orderdetails),
+path('delregister',views.delregister),
+
+
 
 
 

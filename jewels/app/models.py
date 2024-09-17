@@ -71,4 +71,18 @@ class Payment_status(models.Model):
         transactionid = models.IntegerField()
         amount = models.IntegerField()
 
+class delivery(models.Model):
+    rout = models.TextField()
+    Email =  models.EmailField(unique=True)
+    password = models.IntegerField()
+    name = models.TextField()
+    phonenumber = models.IntegerField()
+    def __str__(self):
+        return self.name
+
+class delpro(models.Model):
+    delivery=models.ForeignKey(delivery,on_delete=models.CASCADE)
+    buy=models.ForeignKey(Buy,on_delete=models.CASCADE)
+    status=models.BooleanField(default=False)
+    date=models.TextField(null=True) 
 

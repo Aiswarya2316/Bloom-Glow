@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        /* Navbar styling */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+        }
+        .navbar-right {
+            float: right;
+        }
+
+        /* Order details container */
+        .order-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .order-details {
+            margin-bottom: 20px;
+        }
+        .order-details p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .order-summary {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .order-summary span {
+            float: right;
+        }
+        .card{
+      float: left;
+      width: 300px;
+      margin-left: 100PX;
+      /* margin: auto; */
+        padding: 0px;
+      margin-top: 6px;
+    } 
+
+    .pro{
+  background-color: rgb(81, 10, 222);
+  color: rgb(236, 228, 228);
+  border: 2px solid rgb(81, 10, 222);
+  margin: 20PX;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="../userhome">Home</a>
+        <a href="../userviewproduct">Products</a>
+        <a href="../addtocart/{{i.pk}}">Cart</a>
+        <a href="../delivery">delivery</a>
+        <a href="#order" class="active">Order Details</a>
+        <div class="navbar-right">
+            <a href="../userprofile">My Account</a>
+            <a href="../logout">Logout</a>
+        </div>
+    </div>
+
+    <!-- Order Details Container -->
+    {% for i in data %}
+    <div class="order-container">
+        <h2>Order Details</h2>
+        <div class="order-details">
+            <p><strong>Product name :</strong> {{i.product.name}}</p>
+            <p><strong>Order Date:</strong> {{i.date_of_buying}}</p>
+            <p><strong>Shipping Address:</strong> {{i.user.location}}</p>
+            <p><strong>Payment Method:</strong>Cash on delivery</p>
+        </div>
+
+        
+    </div>
+    {% endfor %}
+    
+</body>
+</html>

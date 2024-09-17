@@ -241,3 +241,25 @@ def deleteitem(req,id):
     data=cart.objects.get(pk=id)
     data.delete()
     return redirect(user_view_cart)
+
+def orderdetails(req):
+    data=Buy.objects.filter(user=get_usr(req))
+    return render(req,'orderdetails.html',{'data':data})
+    
+def delregister(req):
+
+    if req.method=='POST':
+        name1=req.POST['name']
+        email2=req.POST['Email']
+        phonenumber3=req.POST['phonenumber']
+        location4=req.POST['rout']
+        password5=req.POST['password']
+    
+        try:
+            data=delivery.objects.create(name=name1,Email=email2,phonenumber=phonenumber3,rout=location4,password=password5)
+            data.save()
+            return redirect(login)
+        except:
+            messages.warning(req, "Email Already Exits , Try Another Email.")
+    return render(req,'deliveryreg.html')
+    print(delregister)
