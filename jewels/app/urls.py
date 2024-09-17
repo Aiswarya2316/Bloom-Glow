@@ -24,6 +24,7 @@ path('buynow/<int:id>',views.buynow),
 path('deleteitem/<int:id>',views.deleteitem),
 path('orderdetails',views.orderdetails),
 path('delregister',views.delregister),
+path('viewshop',views.viewshop),
 
 
 

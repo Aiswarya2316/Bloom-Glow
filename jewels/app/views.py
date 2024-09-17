@@ -263,3 +263,8 @@ def delregister(req):
             messages.warning(req, "Email Already Exits , Try Another Email.")
     return render(req,'deliveryreg.html')
     print(delregister)
+
+
+def viewshop(req):
+    data=Shopreg.objects.all()
+    return render(req,'viewshop.html',{'data':data})
