@@ -11,7 +11,7 @@ def get_usr(req):
 
 
 def get_shop(req):
-    data=Product.objects.get(category=req.session['shop'])
+    data=Shopreg.objects.get(Email=req.session['shop'])
     return data
 
 
@@ -102,7 +102,8 @@ def shopregister(req):
 
 def userhome(req):
     if 'user' in req.session:
-        return render(req,'userhome.html')
+        data=Product.objects.all()
+        return render(req,'userhome.html',{'data':data})
     else:
         return redirect(login)
 
@@ -124,11 +125,10 @@ def addpro(req):
         name = req.POST['name']
         discription = req.POST['discription']
         price = req.POST['price']
-        category = req.POST['category']
         quantity = req.POST['quantity']
         offerprice = req.POST['offerprice']
         image = req.FILES['image']
-        data=Product.objects.create(name=name,discription=discription,price=price,category=category,quantity=quantity,offerprice=offerprice,image=image)
+        data=Product.objects.create(name=name,discription=discription,price=price,quantity=quantity,offerprice=offerprice,image=image)
         data.save()
         return redirect(viewpro)
     return render(req,'addpro.html')

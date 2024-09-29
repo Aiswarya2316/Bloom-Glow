@@ -23,10 +23,10 @@ class Shopreg(models.Model):
         return self.name
     
 class Product(models.Model):
+    shop = models.ForeignKey(Shopreg,on_delete=models.CASCADE)
     name = models.TextField()
     discription = models.TextField()
     price = models.IntegerField()
-    category = models.TextField()
     quantity = models.IntegerField()
     offerprice = models.IntegerField()
     image = models.FileField()
