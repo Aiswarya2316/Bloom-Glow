@@ -115,6 +115,10 @@ def shophome(req):
     
     return render(req,'shophome.html')
 
+def deliverys(req):
+    
+    return render(req,'deliveryhome.html')
+
 def addpro(req):
     if req.method=='POST':
         name = req.POST['name']
@@ -191,6 +195,11 @@ def userviewproduct(req):
 def prodetails(req,id):
     data=Product.objects.get(pk=id)
     return render(req,'prodetails.html',{'data':data})
+
+def shopprodetails(req,id):
+    data=Product.objects.get(pk=id)
+    return render(req,'shopprodetails.html',{'data':data})
+
 
 
 def user_cart(req,id):
@@ -270,3 +279,27 @@ def delregister(req):
 def viewshop(req):
     data=Shopreg.objects.all()
     return render(req,'viewshop.html',{'data':data})
+
+def aboutus(req):
+    
+    return render(req,'aboutus.html')
+
+def contact(req):
+    
+    return render(req,'contact.html')
+
+def service(req):
+    
+    return render(req,'service.html')
+
+def bookinghistry(req):
+    #  if 'shop' in req.session:
+    l=[]
+    data=Product.objects.filter(shop=get_shop(req))
+    for i in data:
+        data1=Buy.objects.filter(product=i)
+        l.append(data1)
+    print(l)
+    # data1=delivery.objects.all()
+    return render(req,'bookinghistry.html',{'data':l})
+
