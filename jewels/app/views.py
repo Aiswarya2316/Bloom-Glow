@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from django.contrib import messages
+import re
 from django.contrib.auth.models import User,auth
 import datetime
 # Create your views here.
@@ -33,7 +36,7 @@ def login(req):
             data=Register.objects.get(Email=Email,password=password)
             req.session['user']=data.Email
             return redirect(userhome)
-        except:
+        except Register.DoesNotExist:
             admin=auth.authenticate(username=Email,password=password)
             if admin is not None:
                 auth.login(req,admin)
@@ -42,14 +45,15 @@ def login(req):
                 return redirect(adminhome)
             
             else:
-                data=Shopreg.objects.get(Email=Email,password=password)
-                req.session['shop']=data.Email
+                try:
+                    data=Shopreg.objects.get(Email=Email,password=password)
+                    req.session['shop']=data.Email
 
-                return redirect(shophome)
+                    return redirect(shophome)
+                except Shopreg.DoesNotExist:
 
 
-
-            messages.warning(req, "INVALID INPUT !")
+                     messages.warning(req, "INVALID INPUT !")
     return render(req,'login.html')
 
 
@@ -73,6 +77,17 @@ def register(req):
         phonenumber3=req.POST['phonenumber']
         location4=req.POST['location']
         password5=req.POST['password']
+         # Validate email
+        try:
+            validate_email(email2)
+        except ValidationError:
+            messages.warning(req, "Invalid email format, please enter a valid email.")
+            return render(req, 'register.html')
+
+        # Validate phone number (assuming 10-digit numeric format)
+        if not re.match(r'^\d{10}$', phonenumber3):
+            messages.warning(req, "Invalid phone number. Please enter a valid 10-digit phone number.")
+            return render(req, 'register.html')
         try:
             data=Register.objects.create(name=name1,Email=email2,phonenumber=phonenumber3,location=location4,password=password5)
             data.save()
