@@ -71,7 +71,7 @@
    
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-      <a href="#" class="logo">
+      <a href="../userhome" class="logo">
         <img src="static/download (1).png" alt="logo" width="70px">
       </a>
       <div class="collapse navbar-collapse" id="mynavbar">
@@ -81,6 +81,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../userviewproduct">view product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../user_view_cart">cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../orderdetails">orderdetails</a>
@@ -113,6 +116,7 @@
     <div class="order-container">
         <h2>Order Details</h2>
         <div class="order-details">
+          <img src="{{i.product.image.url}}" alt="" style="width:250px">
             <p><strong>Product name :</strong> {{i.product.name}}</p>
             <p><strong>Order Date:</strong> {{i.date_of_buying}}</p>
             <p><strong>Shipping Address:</strong> {{i.user.location}}</p>
