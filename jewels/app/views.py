@@ -17,7 +17,9 @@ def get_shop(req):
     data=Shopreg.objects.get(Email=req.session['shop'])
     return data
 
-
+def get_product(req):
+    data=Product.objects.get(shop=req.session['product'])
+    return data
 
 
 def login(req):
@@ -143,7 +145,7 @@ def addpro(req):
         quantity = req.POST['quantity']
         offerprice = req.POST['offerprice']
         image = req.FILES['image']
-        data=Product.objects.create(name=name,discription=discription,price=price,quantity=quantity,offerprice=offerprice,image=image)
+        data=Product.objects.create(name=name,discription=discription,price=price,quantity=quantity,offerprice=offerprice,image=image,shop=get_shop(req))
         data.save()
         return redirect(viewpro)
     return render(req,'addpro.html')
