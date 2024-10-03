@@ -116,14 +116,22 @@
     <div class="container">
         <h2>Get in Touch</h2>
         <form action="submit_contact_form.php" method="post">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
+          <table>
+          <tr>
+            <td><label for="name">Your Name:</label></td>
+            <td><input type="text" id="name" name="name" required></td>
+          </tr>
 
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
+          <tr>
+            <td><label for="email">Your Email:</label></td>
+            <td><input type="email" id="email" name="email" required></td>
+          </tr>
 
-            <label for="message">Your Message:</label>
-            <textarea id="message" name="message" rows="6" required></textarea>
+          <tr>
+            <td><label for="message">Your Message:</label></td>
+            <td><textarea id="message" name="message" rows="6" required></textarea></td>
+          </tr>
+          </table>
 
             <input type="submit" value="Submit">
         </form>
