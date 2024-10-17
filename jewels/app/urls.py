@@ -31,6 +31,7 @@ path('aboutus',views.aboutus),
 path('contact',views.contact),
 path('service',views.service),
 path('bookinghistry',views.bookinghistry),
+path('search/', views.search_by_category, name='search_by_category'),
 
 
 
