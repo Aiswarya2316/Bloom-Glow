@@ -320,3 +320,14 @@ def bookinghistry(req):
     # data1=delivery.objects.all()
     return render(req,'bookinghistry.html',{'data':l})
 
+
+def search_by_category(request):
+    categories = Category.objects.all()
+    selected_category = request.GET.get('category')
+    products = Product.objects.filter(category__name=selected_category) if selected_category else Product.objects.all()
+
+    return render(request, 'search.html', {
+        'products': products,
+        'categories': categories,
+        'selected_category': selected_category
+    })
