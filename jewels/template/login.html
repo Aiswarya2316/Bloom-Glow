@@ -24,7 +24,7 @@
     background: rgba(255, 255, 255, 0.3); /* Transparent background */
     border-radius: 10px;
     padding: 20px;
-    width: 300px;
+    width: 400px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px); /* Adds a blur effect to the background */
     text-align: center;
@@ -33,6 +33,8 @@
 .login-container h2 {
     margin-bottom: 20px;
     color: #fff;
+    font-size:xx-large;
+    
 }
 
 .login-container input {
@@ -64,6 +66,7 @@
     </style>
 </head>
 <body>
+    <!-- <h2>WELCOME TO BLOOM GLOW</h2> -->
     <div class="login-container">
         
         <form action="" method="POST">
@@ -79,7 +82,7 @@
           {% endif %}
             <input type="text" id="Email" name="Email" placeholder="Username" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Login</button><br>
             <a href="../register">sign up</a>
         </form>
     </div>
