@@ -321,13 +321,22 @@ def bookinghistry(req):
     return render(req,'bookinghistry.html',{'data':l})
 
 
-def search_by_category(request):
-    categories = Category.objects.all()
-    selected_category = request.GET.get('category')
-    products = Product.objects.filter(category__name=selected_category) if selected_category else Product.objects.all()
+# def search_by_category(request):
+#     categories = Category.objects.all()
+#     selected_category = request.GET.get('category')
+#     products = Product.objects.filter(category__name=selected_category) if selected_category else Product.objects.all()
 
-    return render(request, 'search.html', {
-        'products': products,
-        'categories': categories,
-        'selected_category': selected_category
-    })
+#     return render(request, 'search.html', {
+#         'products': products,
+#         'categories': categories,
+#         'selected_category': selected_category
+#     })
+
+def product_search(request):
+    query = request.GET.get('query')  # Get the search term from the request
+    products = []
+    if query:
+        # Filter products whose name contains the search term (case-insensitive)
+        products = Product.objects.filter(name__icontains=query)
+        
+    return render(request, 'product_search.html', {'products': products, 'query': query})

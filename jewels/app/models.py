@@ -22,6 +22,12 @@ class Shopreg(models.Model):
     def __str__(self):
         return self.name
     
+# class Category(models.Model):
+#     name = models.CharField(max_length=100)
+
+#     def __str__(self):
+#         return self.name
+    
 class Product(models.Model):
     shop = models.ForeignKey(Shopreg,on_delete=models.CASCADE)
     name = models.TextField()
@@ -30,6 +36,8 @@ class Product(models.Model):
     quantity = models.IntegerField()
     offerprice = models.IntegerField()
     image = models.FileField()
+    # category = models.ForeignKey(Category,on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name
@@ -86,8 +94,4 @@ class delpro(models.Model):
     status=models.BooleanField(default=False)
     date=models.TextField(null=True) 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
