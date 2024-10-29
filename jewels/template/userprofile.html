@@ -82,10 +82,14 @@ button:hover, a:hover {
             <a class="nav-link" href="../logout">logout</a>
           </li>
         </ul>
-        <form class="d-flex">
+        <!-- <form class="d-flex">
           <input class="form-control me-2" type="text" placeholder="Search">
           <button class="btn btn-primary" type="button">Search</button>
-        </form>
+        </form> -->
+        <form method="get" action="{% url 'product_search' %}">
+          <input type="text" name="query" placeholder="Search for products...">
+          <button type="submit">Search</button>
+      </form>
       </div>
     </div>
   </nav>
