@@ -8,7 +8,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
-          <a href="#" class="logo">
+          <a href="../userhome" class="logo">
             <img src="static/download (1).png" alt="logo" width="70px">
           </a>
           <div class="collapse navbar-collapse" id="mynavbar">
@@ -56,7 +56,7 @@
             {% for product in products %}
                 <div class="col-md-4 gallery">
                     <div class="product">
-                        <img src="{{ product.image.url }}" alt="Product Image">
+                        <img src="{{ product.image.url }}" alt="Product Image" width="50%">
                         <div class="description">
                             <h3>{{ product.name }}</h3>
                             <p class="price">{{ product.description }}</p>
