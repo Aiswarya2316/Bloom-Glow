@@ -41,7 +41,7 @@
             background-color: white;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        /* form {
+        form {
             display: flex;
             flex-direction: column;
         }
@@ -61,7 +61,15 @@
         }
         form input[type="submit"]:hover {
             background-color: #555;
-        } */
+        }
+        #srch {
+          display: flex;
+          flex-direction: row;
+        }
+        #serch{
+          margin-left: 30px;
+          height:50%; 
+        }
         h1{
           text-align: center;
           font-style: italic;
@@ -103,10 +111,10 @@
           <a class="nav-link" href="../logout">logout</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
-      </form>
+      <form  id="srch" method="get" action="{% url 'product_search' %}">
+        <input type="text" name="query" placeholder="Search for products...">
+        <button id="serch" class="btn btn-primary" type="submit">Search</button>
+    </form>
     </div>
   </div>
 </nav>

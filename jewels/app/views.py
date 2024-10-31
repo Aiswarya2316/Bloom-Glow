@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.db.models import Q
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
@@ -340,3 +341,15 @@ def product_search(request):
         products = Product.objects.filter(name__icontains=query)
         
     return render(request, 'product_search.html', {'products': products, 'query': query})
+
+# def product_search(request):
+#     query = request.GET.get('query')  # Get the search term from the request
+#     products = []
+#     if query:
+#         # Filter products whose name or description contains the search term (case-insensitive)
+#         products = Product.objects.filter(
+#             Q(name__icontains=query) | Q(discription__icontains=query)
+#         )
+        
+#     return render(request, 'product_search.html', {'products': products, 'query': query})
+
