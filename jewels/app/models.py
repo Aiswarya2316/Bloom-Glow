@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Register(models.Model):
     Email = models.EmailField(unique=True)
@@ -22,11 +21,7 @@ class Shopreg(models.Model):
     def __str__(self):
         return self.name
     
-# class Category(models.Model):
-#     name = models.CharField(max_length=100)
 
-#     def __str__(self):
-#         return self.name
     
 class Product(models.Model):
     shop = models.ForeignKey(Shopreg,on_delete=models.CASCADE)
@@ -36,7 +31,6 @@ class Product(models.Model):
     quantity = models.IntegerField()
     offerprice = models.IntegerField()
     image = models.FileField()
-    # category = models.ForeignKey(Category,on_delete=models.CASCADE)
 
 
     def __str__(self):
