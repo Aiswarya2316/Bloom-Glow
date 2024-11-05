@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-import re
+# import re
 from django.contrib.auth.models import User,auth
 import datetime
 # Create your views here.
@@ -120,7 +120,7 @@ def shopregister(req):
 
 def userhome(req):
     if 'user' in req.session:
-        data=Product.objects.all()
+        data = Product.objects.all().order_by('-shop')[:4]
         return render(req,'userhome.html',{'data':data})
     else:
         return redirect(login)
@@ -252,6 +252,19 @@ def qty_decri(req,id):
         data.quantity-=1
         data.save()
     return redirect(user_view_cart)
+
+
+
+def buynow1(req,id):
+    if 'user' in req.session:
+        product=Product.objects.get(pk=id)
+        user=get_usr(req)
+        quantity=1
+        date=datetime.datetime.now().strftime("%x")
+        price=product.price
+        order=Buy.objects.create(product=product,user=user,quantity=quantity,date_of_buying=date,price=price)
+        order.save()
+    return redirect(orderdetails)
 
 def buynow(req,id):
      if 'user' in req.session:
