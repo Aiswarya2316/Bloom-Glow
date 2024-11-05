@@ -17,6 +17,10 @@
      margin-top: 100px;
      
  }
+ h2{
+  text-align: center;
+  color:#a8701c
+ }
  h3{
      text-align: center;
      text-shadow: #301803;
@@ -82,6 +86,10 @@
             color: white; 
             background-color: #29c474; 
         } 
+
+  #home{
+    margin-top: 50px;
+  }
  
  </style>
 </head>
@@ -89,9 +97,12 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a href="#" class="logo">
-      <img src="static/download (1).png" alt="logo" width="70px">
+    <a href="#" class="logo"  >
+      <img src=" static/logo.png" alt="logo" width="100px">
     </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -128,9 +139,6 @@
     </div>
   </div>
 </nav>
-<!-- <div>
-    <img src="static/bloom+packaging+1.webp" width="100%" height="100%">
- </div> -->
 
 <!-- Carousel -->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -147,22 +155,19 @@
     <div class="carousel-item active">
       <img src="static/bloom-and-shine-this-monsoon.webp" alt="Los Angeles" class="d-block" style="width:100%" style="height:50%">
       <div class="carousel-caption">
-        <h3>Los Angeles</h3>
-        <p>We had such a great time in LA!</p>
+       
       </div>
     </div>
     <div class="carousel-item">
       <img src="static/1700845924089-Mobile_Browse_Page_Widget-v2.webp" alt="Chicago" class="d-block" style="width:100%" style="height:50%">
       <div class="carousel-caption">
-        <h3>Chicago</h3>
-        <p>Thank you, Chicago!</p>
+       
       </div> 
     </div>
     <div class="carousel-item">
       <img src="static/bloom-and-shine-this-monsoon.webp" alt="New York" class="d-block" style="width:100%" style="height:50%">
       <div class="carousel-caption">
-        <h3>New York</h3>
-        <p>We love the Big Apple!</p>
+        
       </div>  
     </div>
     
@@ -180,7 +185,8 @@
 
       {% for i in data|slice:":4" %}
 <div class="gallery">
-  <div class="product">
+  
+  <div class="product" >
     <img src="{{i.image.url}}" alt="Product 1">
     <div class="description">
       <h3>Product {{i.name}}</h3>
@@ -193,12 +199,13 @@
 </div>
 {% endfor %}
 
-      
-                  <img src="static/246_PE0Y0BABYXXXG_BOY (10 of 8)-636x500.webp" width="100%" height="100%">
+
+      <div> 
+                  <img id="home" src="static/home-overlay(2)(1)(1).png" width="100%" height="100%">
                </div>
  
 
-          <div class="container-fluid p-5 my-5 bg-dark text-white">
+          <div class="container-fluid p-5 bg-dark text-white" >
             <table >
               <thead>
                 <tr>
