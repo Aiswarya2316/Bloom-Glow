@@ -54,7 +54,7 @@ def login(req):
                     data=Shopreg.objects.get(Email=Email,password=password)
                     req.session['shop']=data.Email
 
-                    return redirect(shophome)
+                    return redirect(viewpro)
                 except Shopreg.DoesNotExist:
 
 
@@ -134,7 +134,7 @@ def adminhome(req):
 
 def shophome(req):
     
-    return render(req,'shop/shophome.html')
+    return render(req,'shop/viewpro.html')
 
 def deliverys(req):
     
