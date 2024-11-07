@@ -12,44 +12,82 @@
     padding: 20px;
 }
 
+
+/* nav */
+
+
+
+.nav-link:hover{
+        color: rgb(222, 247, 34);
+    }
+
+
+.navbar .nav-link {
+  transition: color 0.3s; /
+}
+
+.navbar .nav-link:hover {
+  color: #ffdd57; /* Change color on hover */
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5); /* Light border for toggler */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom color for toggler icon */
+}
+#nav{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 80px;
+  margin: -20px -20px-20px 0;
+  
+}
+
+
 </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
-          
-          <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-              <a href="#" class="logo">
-                <img src="static/download (1).png" alt="logo" width="70px">
-              </a>
-              <li class="nav-item">
-                <a class="nav-link" href="../shophome">home</a>
-              </li>
-              <li class="nav-item"></li>
-                <a class="nav-link" href="../viewpro">view product</a>
-              </li>
-              <!-- <li class="nav-item"></li>
-                <a class="nav-link" href="../viewshop">view shop</a>
-              </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="../addpro">add product</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../bookinghistry">bookinghistory</a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link" href="../logout">logout</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="text" placeholder="Search">
-              <button class="btn btn-primary" type="button">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+  <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a href="#" class="logo"  >
+        <img src=" static/logo.png" alt="logo" width="100px">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../viewpro">viewproduct</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../addpro">addproduct</a>
+        </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../bookinghistry">bookings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../feedback_list">Feedback</a>
+      </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../logout">logout</a>
+          </li>
+        </ul>
+        
+  
+    <form class="d-flex" method="get" action="{% url 'product_search' %}">
+      <input type="text" name="form-control me-2" placeholder="Search for products...">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  
+      </div>
+    </div>
+  </nav>
+  
+
 <div style="padding:10px;margin-top:15px;background-color:#c7360e;">
   <div class="card">
     <img src="{{data.image.url}}" alt="" style="width:500px">

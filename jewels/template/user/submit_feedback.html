@@ -11,6 +11,7 @@
  <iframe allow="join-ad-interest-group" data-tagging-id="AW-797221335" data-load-time="1726599499997" height="0" width="0" src="https://td.doubleclick.net/td/rul/797221335?random=1726599499990&amp;cv=11&amp;fst=1726599499990&amp;fmt=3&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be4990v9101312129z879813278za200zb79813278&amp;gcd=13t3t3t3t5l1&amp;dma=0&amp;tag_exp=0&amp;u_w=1280&amp;u_h=720&amp;url=https%3A%2F%2Fnicepage.com%2Fhtml-templates%2Fpreview%2Fsweet-chicken-3791646%3Fdevice%3Ddesktop&amp;ref=https%3A%2F%2Fnicepage.com%2Fht%2F3791646%2Fsweet-chicken-html-template&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=Sweet%20chicken%20HTML%20Template%20Live%20Demo&amp;npa=0&amp;pscdl=noapi&amp;auid=954029643.1726599416&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B128.0.6613.138%7CNot%253BA%253DBrand%3B24.0.0.0%7CGoogle%2520Chrome%3B128.0.6613.138&amp;uamb=0&amp;uam=&amp;uap=Windows&amp;uapv=15.0.0&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config" style="display: none; visibility: hidden;"></iframe>
 <style>
 
+
 /* nav */
 
 
@@ -42,56 +43,61 @@
   
 }
 
+
 /* carousel */
 
 
 </style>
 </head>
 <body>
-    <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-          <a href="../userhome" class="logo">
-            <img src="../static/logo.png" alt="logo" width="70px">
-          </a>
-          
-          <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="../userviewproduct">View Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../orderdetails">Order Details</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../aboutus">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../service">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../contact">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../user_view_cart">My Cart</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../profile">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../submit_feedback">feedback</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../logout">Logout</a>
-              </li>
-            </ul>
-              
-            <form class="d-flex" method="get" action="{% url 'product_search' %}">
-              <input class="form-control me-2"  type="text" name="query" placeholder="Search for products...">
-              <button class="btn btn-primary" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+  <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a href="#" class="logo"  >
+        <img src=" ../static/logo.png" alt="logo" width="100px">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../profile">profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../userviewproduct">view product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../orderdetails">orderdetails</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../contact">contact</a>
+          </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../aboutus">Aboutus</a>
+        </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../service">service</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../submit_feedback">Feedback</a>
+      </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../logout">logout</a>
+          </li>
+        </ul>
+        
+  
+    <form class="d-flex" method="get" action="{% url 'product_search' %}">
+      <input type="text" name="form-control me-2" placeholder="Search for products...">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  
+      </div>
+    </div>
+  </nav>
+  
     
     <h2>Submit Your Feedback</h2>
     <form method="POST">

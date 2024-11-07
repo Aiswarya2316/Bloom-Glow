@@ -5,7 +5,7 @@ class Register(models.Model):
     Email = models.EmailField(unique=True)
     name = models.TextField()
     phonenumber = models.IntegerField()
-    password = models.IntegerField()
+    password = models.TextField()
     location= models.TextField()
 
     def __str__(self):
@@ -15,7 +15,7 @@ class Shopreg(models.Model):
     Email = models.EmailField(unique=True)
     name = models.TextField()
     phonenumber = models.IntegerField()
-    password = models.IntegerField()
+    password = models.TextField()
     location= models.TextField()
 
     def __str__(self):

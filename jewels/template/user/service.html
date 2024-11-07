@@ -20,21 +20,38 @@
             padding: 10px 0;
             text-align: center;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
+        
+/* nav */
+
+
+
+.nav-link:hover{
+        color: rgb(222, 247, 34);
+    }
+
+
+.navbar .nav-link {
+  transition: color 0.3s; /
+}
+
+.navbar .nav-link:hover {
+  color: #ffdd57; /* Change color on hover */
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5); /* Light border for toggler */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom color for toggler icon */
+}
+#nav{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 80px;
+  margin: -20px -20px-20px 0;
+  
+}
+
         .container {
             max-width: 1200px;
             margin: 50px auto;
@@ -97,11 +114,14 @@
 
 
     
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-      <a href="../userhome" class="logo">
-        <img src="static/logo.png" alt="logo" width="70px">
+      <a href="#" class="logo"  >
+        <img src=" static/logo.png" alt="logo" width="100px">
       </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
@@ -109,9 +129,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../userviewproduct">view product</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../user_view_cart">cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../orderdetails">orderdetails</a>
@@ -127,18 +144,24 @@
       <li class="nav-item">
         <a class="nav-link" href="../service">service</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../submit_feedback">Feedback</a>
+      </li>
           <li class="nav-item">
             <a class="nav-link" href="../logout">logout</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-primary" type="button">Search</button>
-        </form>
+        
+  
+    <form class="d-flex" method="get" action="{% url 'product_search' %}">
+      <input type="text" name="form-control me-2" placeholder="Search for products...">
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  
       </div>
     </div>
   </nav>
-
+  
   <h1>Our Services</h1>
 
     <div class="container">
