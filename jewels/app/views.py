@@ -7,6 +7,8 @@ from django.contrib import messages
 # import re
 from django.contrib.auth.models import User,auth
 import datetime
+from .forms import FeedbackForm
+
 # Create your views here.
 
 def get_usr(req):
@@ -354,6 +356,26 @@ def product_search(request):
         products = Product.objects.filter(name__icontains=query)
         
     return render(request, 'user/product_search.html', {'products': products, 'query': query})
+
+
+def submit_feedback(request):
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.user.name = request.user
+            feedback.save()
+            return redirect('feedback_success')
+    else:
+        form = FeedbackForm()
+    return render(request, 'user/submit_feedback.html', {'form': form})
+
+
+def feedback_list(request):
+    feedbacks = Feedback.objects.all().order_by('-submitted_at')
+    return render(request, 'shop/feedback_list.html', {'feedbacks': feedbacks})
+
+
 
 # def product_search(request):
 #     query = request.GET.get('query')  # Get the search term from the request

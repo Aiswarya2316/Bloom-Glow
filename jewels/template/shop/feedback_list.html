@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feedback List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          margin: 0;
+          /* padding: 20px; */
+      }
+      
+      
+      
+      /* navbar */
+      
+      nav-link:hover{
+              color: rgb(222, 247, 34);
+          }
+      .navbar .nav-link {
+        transition: color 0.3s; /* Smooth transition for hover effect */
+      }
+      .navbar .nav-link:hover {
+        color: #ffdd57;
+      }
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.5); /* Light border for toggler */
+      }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom color for toggler icon */
+      }
+      #nav{
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        height: 80px;
+        /* margin: -20px -20px-20px 0; */
+        
+      }
+      
+</style>      
+</head>
+<body>
+    <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+          <a href="../viewpro" class="logo">
+            <img src="../static/logo.png" alt="logo" width="150px">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link"  href="../viewpro">View Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../addpro">Add Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../feedback_list">feedback</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  href="../bookinghistry">Bookinghistory</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../logout">Logout</a>
+              </li>
+            </ul>
+              
+            <form class="d-flex" method="get" action="{% url 'product_search' %}">
+              <input class="form-control me-2"  type="text" name="query" placeholder="Search for products...">
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    
+    <h2>User Feedback</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Message</th>
+                <th>Rating</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.user.name }}</td>
+                <td>{{ feedback.message }}</td>
+                <td>{{ feedback.rating }}</td>
+                <td>{{ feedback.submitted_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

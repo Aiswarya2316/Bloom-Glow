@@ -89,3 +89,14 @@ class delpro(models.Model):
     date=models.TextField(null=True) 
 
 
+class Feedback(models.Model):
+    user = models.ForeignKey(Register, on_delete=models.CASCADE, related_name='feedbacks')
+    message = models.TextField()
+    rating = models.IntegerField(default=5)  # 1 to 5 rating
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Feedback from {self.user.name}"
+
+
+
