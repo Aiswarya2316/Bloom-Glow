@@ -121,18 +121,18 @@ def shopregister(req):
 def userhome(req):
     if 'user' in req.session:
         data = Product.objects.all().order_by('-shop')[:4]
-        return render(req,'userhome.html',{'data':data})
+        return render(req,'user/userhome.html',{'data':data})
     else:
         return redirect(login)
 
 def adminhome(req):
     
-    return render(req,'adminhome.html')
+    return render(req,'admin/adminhome.html')
 
 
 def shophome(req):
     
-    return render(req,'shophome.html')
+    return render(req,'shop/shophome.html')
 
 def deliverys(req):
     
@@ -149,12 +149,12 @@ def addpro(req):
         data=Product.objects.create(name=name,discription=discription,price=price,quantity=quantity,offerprice=offerprice,image=image,shop=get_shop(req))
         data.save()
         return redirect(viewpro)
-    return render(req,'addpro.html')
+    return render(req,'shop/addpro.html')
 
     
 def viewpro(req):
     data=Product.objects.all()
-    return render(req,'viewpro.html',{'data':data})    
+    return render(req,'shop/viewpro.html',{'data':data})    
 
 def edit(req,id):
     data=Product.objects.get(pk=id)
@@ -174,7 +174,7 @@ def edit(req,id):
         else:
             Product.objects.filter(pk=id).update(name=name1,price=price,offerprice=offerprice,quantity=quantity)
         return redirect(viewpro)
-    return render(req,'edit.html',{'data':data})
+    return render(req,'shop/edit.html',{'data':data})
 
 def delete(req,id):
     data=Product.objects.get(pk=id)
@@ -186,7 +186,7 @@ def delete(req,id):
 def profile(req):
     if 'user' in req.session:
         # data=Register.objects.get(Email=req.session['user'])
-        return render(req,'userprofile.html',{'data':get_usr(req)})
+        return render(req,'user/userprofile.html',{'data':get_usr(req)})
     else:
         return redirect(login)
     
@@ -201,22 +201,22 @@ def upload(req):
             location=req.POST['location']
             Register.objects.filter(Email=req.session['user']).update(name=name,phonenumber=phonenumber,location=location)
             return redirect(profile)
-        return render(req,'updateprofile.html',{'data':data})
+        return render(req,'user/updateprofile.html',{'data':data})
 
     else:
        return redirect(login)
     
 def userviewproduct(req):
     data=Product.objects.all()
-    return render(req,'userviewproduct.html',{'data':data})
+    return render(req,'user/userviewproduct.html',{'data':data})
 
 def prodetails(req,id):
     data=Product.objects.get(pk=id)
-    return render(req,'prodetails.html',{'data':data})
+    return render(req,'user/prodetails.html',{'data':data})
 
 def shopprodetails(req,id):
     data=Product.objects.get(pk=id)
-    return render(req,'shopprodetails.html',{'data':data})
+    return render(req,'shop/shopprodetails.html',{'data':data})
 
 
 
@@ -239,7 +239,7 @@ def user_cart(req,id):
 def user_view_cart(req):
     if 'user' in req.session:
         data=cart.objects.filter(user=get_usr(req))
-        return render(req,'addtocart.html',{'data':data})
+        return render(req,'user/addtocart.html',{'data':data})
 def qty_incri(req,id):
     data=cart.objects.get(pk=id)
     data.quantity+=1
@@ -284,7 +284,7 @@ def deleteitem(req,id):
 
 def orderdetails(req):
     data=Buy.objects.filter(user=get_usr(req))
-    return render(req,'orderdetails.html',{'data':data})
+    return render(req,'user/orderdetails.html',{'data':data})
     
 def delregister(req):
 
@@ -309,19 +309,19 @@ def delregister(req):
 
 def viewshop(req):
     data=Shopreg.objects.all()
-    return render(req,'viewshop.html',{'data':data})
+    return render(req,'admin/viewshop.html',{'data':data})
 
 def aboutus(req):
     
-    return render(req,'aboutus.html')
+    return render(req,'user/aboutus.html')
 
 def contact(req):
     
-    return render(req,'contact.html')
+    return render(req,'user/contact.html')
 
 def service(req):
     
-    return render(req,'service.html')
+    return render(req,'user/service.html')
 
 def bookinghistry(req):
     #  if 'shop' in req.session:
@@ -332,7 +332,7 @@ def bookinghistry(req):
         l.append(data1)
     print(l)
     # data1=delivery.objects.all()
-    return render(req,'bookinghistry.html',{'data':l})
+    return render(req,'shop/bookinghistry.html',{'data':l})
 
 
 # def search_by_category(request):
@@ -353,7 +353,7 @@ def product_search(request):
         # Filter products whose name contains the search term (case-insensitive)
         products = Product.objects.filter(name__icontains=query)
         
-    return render(request, 'product_search.html', {'products': products, 'query': query})
+    return render(request, 'user/product_search.html', {'products': products, 'query': query})
 
 # def product_search(request):
 #     query = request.GET.get('query')  # Get the search term from the request
