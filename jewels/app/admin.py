@@ -6,4 +6,5 @@ admin.site.register(Product)
 admin.site.register(cart)
 admin.site.register(Buy)
 admin.site.register(Product_quantity)
+admin.site.register(Feedback)
 

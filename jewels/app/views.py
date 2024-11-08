@@ -349,10 +349,10 @@ def bookinghistry(req):
 #     })
 
 def product_search(request):
-    query = request.GET.get('query')  # Get the search term from the request
+    query = request.POST.get('query')  # Get the search term from the request
     products = []
     if query:
-        products = Product.objects.filter(name__icontains=query)
+        products = Product.objects.filter(name=query)
         
     return render(request, 'user/product_search.html', {'products': products, 'query': query})
 
@@ -362,9 +362,9 @@ def submit_feedback(request):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             feedback = form.save(commit=False)
-            feedback.user.name = request.user
+            feedback.user= Register.objects.get (Email=request.session['user'])
             feedback.save()
-            return redirect('feedback_success')
+            return redirect('submit_feedback')
     else:
         form = FeedbackForm()
     return render(request, 'user/submit_feedback.html', {'form': form})

@@ -90,7 +90,9 @@ class delpro(models.Model):
 
 
 class Feedback(models.Model):
-    user = models.ForeignKey(Register, on_delete=models.CASCADE, related_name='feedbacks')
+    user = models.ForeignKey(Register, on_delete=models.CASCADE)
+    shop = models.ForeignKey(Shopreg, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     message = models.TextField()
     rating = models.IntegerField(default=5)  # 1 to 5 rating
     submitted_at = models.DateTimeField(auto_now_add=True)

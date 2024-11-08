@@ -171,8 +171,9 @@
       </ul>
       
 
-  <form class="d-flex" method="get" action="{% url 'product_search' %}">
-    <input type="text" name="form-control me-2" placeholder="Search for products...">
+  <form class="d-flex" method="post" action="{% url 'product_search' %}">
+    {% csrf_token %}
+    <input type="text" class="form-control me-2" name="query" placeholder="Search for products...">
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
