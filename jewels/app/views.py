@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-# import re
+import re
 from django.contrib.auth.models import User,auth
 import datetime
 from .forms import FeedbackForm
@@ -352,7 +352,6 @@ def product_search(request):
     query = request.GET.get('query')  # Get the search term from the request
     products = []
     if query:
-        # Filter products whose name contains the search term (case-insensitive)
         products = Product.objects.filter(name__icontains=query)
         
     return render(request, 'user/product_search.html', {'products': products, 'query': query})
