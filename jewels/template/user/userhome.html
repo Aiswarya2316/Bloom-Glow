@@ -222,23 +222,85 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
-      <div><h2>New Orders</h2></div>  
-
-      {% for i in data|slice:":4" %}
-<div class="gallery">
-  
-  <div class="product" >
-    <img src="{{i.image.url}}" alt="Product 1">
-    <div class="description">
-      <h3>Product {{i.name}}</h3>
-      <p class="price">{{i.discription}}</p>
-      <p class="quantity">{{i.quantity}}</p>
-      <a class="pro" href="../prodetails/{{i.pk}}">Details</a>
-      <a class="pro" href="../addtocart/{{i.pk}}">Add to cart</a>
+<div class="container">
+  <h2>Our New Products</h2>
+  <div class="row">
+    {% for i in data %}
+    <div class="col-md-6 col-lg-3  col-sm-12 mb-4">
+      <div class="gallery">
+        <div class="product">
+          <img src="{{i.image.url}}" alt="Product Image">
+          <div class="description">
+            <h3>Product: {{i.name}}</h3>
+            <p class="price">{{i.discription}}</p>
+            <p class="quantity">Rs: {{i.price}}/ Kg</p>
+            <a class="pro" style="padding: 5px;" href="../prodetails/{{i.pk}}">Details</a>
+            <a class="pro" style="padding: 5px;" href="../addtocart/{{i.pk}}">Add to cart</a>
+          </div>
+        </div>
+      </div>
     </div>
+    {% endfor %}
   </div>
 </div>
-{% endfor %}
+
+<div class="container" id="order_dtls">
+  <h2 class="text-center">Order Details</h2>
+  <div class="row"> 
+      {% for i in data1 %}
+      <div class="col-md-6 col-lg-6  col-sm-12 mb-4">
+          <div class="order-container"> 
+              <div class="order-row d-flex align-items-center">
+                  <div class="order-left">
+                      <img src="{{i.product.image.url}}" alt="Product Image" class="img-fluid"  style="width: 150px;height: 150px;">
+                  </div>
+                  <div class="order-right">
+                      <p><strong>Product name:</strong> {{i.product.name}}</p>
+                      <p><strong>Order Date:</strong> {{i.date_of_buying}}</p>
+                      <p><strong>Shipping Address:</strong> {{i.user.location}}</p>
+                      <p><strong>Payment Method:</strong> {{ i.delivery_status }}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+<!-- Cart Section -->
+<!-- Cart Section -->
+{% if data2 %}
+<div class="container" id="cart_dtls">
+<h2>Our Cart</h2>
+<div class="row"> 
+  {% for i in data2 %}
+  <div class="col-md-6">
+    <div class="order-container"> 
+      <div class="order-row d-flex align-items-center">
+        <div class="order-left">
+          <img src="{{i.product.image.url}}" alt="Product Image" class="rounded-circle img-fluid" style="width: 150px;height: 150px;">
+        </div>
+        <div class="order-right">
+          <h5 class="my-3">Product Name: {{i.product.name}}</h5>
+          <p class="text-muted mb-1">Price: {{i.product.price}}</p>
+          <!-- <a href="../qty_incri/{{i.pk}}" class="btn">+</a> -->
+          <p class="text-muted mb-4">Quantity: {{i.quantity}}kg</p>
+          <!-- <a href="../qty_decri/{{i.pk}}" class="btn">-</a> -->
+          <div class="d-flex justify-content-center mb-2">
+            <a class="btn btn-primary" style="margin: 10px;" href="../buynow/{{i.pk}}">Buy now</a>
+            <a class="btn btn-primary" style="margin: 10px;" href="../prodetails/{{i.product.pk}}">Details</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% else %}
+<p>No items in cart</p>
+{% endif %}
 
 
       <div> 

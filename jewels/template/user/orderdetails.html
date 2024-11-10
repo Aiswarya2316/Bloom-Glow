@@ -175,26 +175,25 @@
       
     <!-- Order Details Container -->
    <!-- Order Details Container -->
-{% for i in data|dictsortreversed:"date_of_buying" %}
-<div class="order-container">
-    <h2>Order Details</h2>
-    <div class="order-row">
-        <!-- Left Column: Image -->
-        <div class="order-left">
-            <img src="{{i.product.image.url}}" alt="Product Image" style="width:100%;">
-        </div>
-
-        <!-- Right Column: Order Details -->
-        <div class="order-right">
-            <p><strong>Product name :</strong> {{i.product.name}}</p>
-            <p><strong>Order Date:</strong> {{i.date_of_buying}}</p>
-            <p><strong>Shipping Address:</strong> {{i.user.location}}</p>
-            <p><strong>Payment Method:</strong> Cash on delivery</p>
-        </div>
-    </div>
-</div>
-{% endfor %}
-
+   {% for i in data %}
+   <div class="order-container">
+       <h2>Order Details</h2>
+       <div class="order-row">
+           <div class="order-left">
+               <img src="{{i.product.image.url}}" alt="Product Image" style="width:100%;">
+           </div>
+           <div class="order-right">
+               <p><strong>Product name :</strong> {{i.product.name}}</p>
+               <p><strong>Product quantity :</strong> {{i.quantity}}</p>
+               <p><strong>Order Date:</strong> {{i.date_of_buying}}</p>
+               <p><strong>Shipping Address:</strong> {{i.user.location}}</p>
+               <p><strong>delivery status:</strong>{{ i.delivery_status }} </p>
+           </div>
+       </div>
+   </div>
+   {% endfor %}
+   
+   
     
 </body>
 </html>
