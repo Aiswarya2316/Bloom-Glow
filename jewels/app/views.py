@@ -7,7 +7,6 @@ from django.contrib import messages
 import re
 from django.contrib.auth.models import User,auth
 import datetime
-from .forms import FeedbackForm
 
 # Create your views here.
 
@@ -217,6 +216,13 @@ def userviewproduct(req):
 
 def prodetails(req,id):
     data=Product.objects.get(pk=id)
+    if req.method=='POST':
+        message = req.POST['message']
+        rating = req.POST['rating']
+        submitted_at = req.POST['submitted_at']
+        
+        data=Feedback.objects.create(message=message,rating=rating,submitted_at=submitted_at)
+        data.save()
     return render(req,'user/prodetails.html',{'data':data})
 
 def shopprodetails(req,id):
@@ -288,7 +294,7 @@ def deleteitem(req,id):
     return redirect(user_view_cart)
 
 def orderdetails(req):
-    data=Buy.objects.filter(user=get_usr(req))
+    data=Buy.objects.filter(user=get_usr(req))[::-1]
     return render(req,'user/orderdetails.html',{'data':data})
     
 def delregister(req):
