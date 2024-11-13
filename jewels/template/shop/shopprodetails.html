@@ -12,6 +12,11 @@
     padding: 20px;
 }
 
+h5{
+  text-align: left;
+  color:bisque;
+}
+
 
 /* nav */
 
@@ -45,13 +50,14 @@
 }
 
 
+
 </style>
 </head>
 <body>
   <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
       <a href="#" class="logo"  >
-        <img src=" static/logo.png" alt="logo" width="100px">
+        <img src="../static/logo.png" alt="logo" width="100px">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
@@ -91,12 +97,20 @@
 <div style="padding:10px;margin-top:15px;background-color:#c7360e;">
   <div class="card">
     <img src="{{data.image.url}}" alt="" style="width:500px">
-    <h1>{{data.name}}</h1>
-    <p>{{data.price}}</p>
-    <p>{{data.discription}}</p>
+    <h1>Name: {{data.name}}</h1>
+    <p>Price: {{data.price}}</p>
+    <p>Discription: {{data.discription}}</p>
     <!-- <p>
       <a href="../buynow">Buy</p> -->
   </div>
+</div>
+<div>
+  {% for i in feedback %}
+  <h5>Review</h5>
+  <p>message: {{i.message}}</p>
+    <p>rating: {{i.rating}}</p>
+    {% endfor %}
+
 </div>
 
 </body>

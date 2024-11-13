@@ -217,17 +217,21 @@ def userviewproduct(req):
 def prodetails(req,id):
     data=Product.objects.get(pk=id)
     if req.method=='POST':
+        user=get_usr(req)
+        shop=data.shop
+        # product=Product.objects.get(pk=id)
         message = req.POST['message']
         rating = req.POST['rating']
         submitted_at = req.POST['submitted_at']
         
-        data=Feedback.objects.create(message=message,rating=rating,submitted_at=submitted_at)
-        data.save()
+        feedback=Feedback.objects.create(user=user,shop=shop,product=data,message=message,rating=rating,submitted_at=submitted_at)
+        feedback.save()
     return render(req,'user/prodetails.html',{'data':data})
 
 def shopprodetails(req,id):
     data=Product.objects.get(pk=id)
-    return render(req,'shop/shopprodetails.html',{'data':data})
+    feedback = Feedback.objects.filter(product=data).order_by('-submitted_at')
+    return render(req,'shop/shopprodetails.html',{'data':data,'feedback':feedback})
 
 
 
@@ -366,22 +370,22 @@ def product_search(request):
     return render(request, 'user/product_search.html', {'products': products, 'query': query})
 
 
-def submit_feedback(request):
-    if request.method == "POST":
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            feedback = form.save(commit=False)
-            feedback.user= Register.objects.get (Email=request.session['user'])
-            feedback.save()
-            return redirect('submit_feedback')
-    else:
-        form = FeedbackForm()
-    return render(request, 'user/submit_feedback.html', {'form': form})
+# def submit_feedback(request):
+#     if request.method == "POST":
+#         form = FeedbackForm(request.POST)
+#         if form.is_valid():
+#             feedback = form.save(commit=False)
+#             feedback.user= Register.objects.get (Email=request.session['user'])
+#             feedback.save()
+#             return redirect('submit_feedback')
+#     else:
+#         form = FeedbackForm()
+#     return render(request, 'user/submit_feedback.html', {'form': form})
 
 
-def feedback_list(request):
-    feedbacks = Feedback.objects.all().order_by('-submitted_at')
-    return render(request, 'shop/feedback_list.html', {'feedbacks': feedbacks})
+# def feedback_list(request):
+#     feedbacks = Feedback.objects.all().order_by('-submitted_at')
+#     return render(request, 'shop/feedback_list.html', {'feedbacks': feedbacks})
 
 
 

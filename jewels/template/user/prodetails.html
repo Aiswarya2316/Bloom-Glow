@@ -259,6 +259,12 @@ table{
   margin-left: 600px;
 }
 
+h3{
+  text-align: right;
+  color: #0f5d81;
+  margin-right: 300px;
+}
+
     </style>
 </head>
 <body>
@@ -377,6 +383,9 @@ table{
 
 
 
+<div>
+  <h3>Feedback</h3>
+</div>
     <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container mt-4">
@@ -391,25 +400,26 @@ table{
       {% endif %}
 
       <table class="table">
+        
         <tr>
-          <td><label for="user"><b>Name</b></label></td>
-          <td><input type="text" placeholder="Enter product name" name="user" id="user" required></td>
-        </tr>
-        <tr>
-          <td><label for="message"><b>Discription</b></label></td>
-          <td><input type="text" placeholder="Enter discription" name="message" id="message" required></td>
+          <td><label for="message"><b>message</b></label></td>
+          <td><input type="text" placeholder="Enter message" name="message" id="message" required></td>
         </tr>
         <tr>
           <td><label for="rating"><b>Rating</b></label></td>
-          <td><input type="number" placeholder="Enter price" name="rating" id="rating" required></td>
+          <td><input type="number" placeholder="Enter rating" name="rating" id="rating" required></td>
         </tr>
         <tr>
           <td><label for="submitted_at"><b>submitted_at</b></label></td>
-          <td><input type="datetime" placeholder="Enter quantity" name="submitted_at" id="submitted_at" required></td>
+          <td><input type="datetime" placeholder="Enter date" name="submitted_at" id="submitted_at" required></td>
         </tr>
-      </table></div><td>
+      </div>
+      <tr>
+      <td>
       <button class="btn btn-primary " type="submit">submit</button>
       </td>
+    </tr>
+    </table>
     </div>
   </form>
 
