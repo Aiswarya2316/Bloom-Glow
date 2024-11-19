@@ -14,7 +14,7 @@
 
 h5{
   text-align: left;
-  color:bisque;
+  color:rgb(41, 132, 192);
 }
 
 
@@ -75,9 +75,9 @@ h5{
       <li class="nav-item">
         <a class="nav-link" href="../bookinghistry">bookings</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="../feedback_list">Feedback</a>
-      </li>
+      </li> -->
           <li class="nav-item">
             <a class="nav-link" href="../logout">logout</a>
           </li>
@@ -105,8 +105,8 @@ h5{
   </div>
 </div>
 <div>
-  {% for i in feedback %}
   <h5>Review</h5>
+  {% for i in feedback %}
   <p>message: {{i.message}}</p>
     <p>rating: {{i.rating}}</p>
     {% endfor %}

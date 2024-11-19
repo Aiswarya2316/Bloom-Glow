@@ -46,7 +46,7 @@ def login(req):
                 auth.login(req,admin)
                 req.session['admin']=Email
 
-                return redirect(adminhome)
+                return redirect(viewshop)
             
             else:
                 try:
@@ -121,7 +121,7 @@ def shopregister(req):
 
 def userhome(req):
     if 'user' in req.session:
-        data = Product.objects.all().order_by('-shop')[:4]
+        data = Product.objects.all().order_by('-shop')[:6]
         data1 = Buy.objects.filter(user=get_usr(req)).order_by('-date_of_buying')[:2]  # Only get the latest 2 orders
         data2 = cart.objects.filter(user=get_usr(req)).order_by('-id')[:2]  # Get the latest 4 cart items
 
@@ -157,8 +157,9 @@ def addpro(req):
 
     
 def viewpro(req):
-    data=Product.objects.all()
-    return render(req,'shop/viewpro.html',{'data':data})    
+    if 'shop' in req.session:
+        data=Product.objects.filter(shop=get_shop(req))
+        return render(req,'shop/viewpro.html',{'data':data})    
 
 def edit(req,id):
     data=Product.objects.get(pk=id)

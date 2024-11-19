@@ -86,17 +86,40 @@ h3{
   margin:20px;
   text-align: center;
 }
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
 </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="mynavbar">
+    <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="../adminhome">home</a>
-          </li>
+       
           <li class="nav-item">
             <a class="nav-link" href="../viewshop">view shop</a>
           </li>
@@ -131,6 +154,8 @@ h3{
   </div>
 </div>
 {% endfor %}
+
+
 </body>
 </html>
 

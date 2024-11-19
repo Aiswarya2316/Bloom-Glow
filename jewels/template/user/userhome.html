@@ -127,7 +127,9 @@
   #home{
     margin-top: 50px;
   }
- 
+  .carousel-inner{
+    height:700px;
+  }
  </style>
 </head>
 <body>
@@ -223,14 +225,14 @@
   <h2>Our New Products</h2>
   <div class="row">
     {% for i in data %}
-    <div class="col-md-6 col-lg-3  col-sm-12 mb-4">
+    <div class="col-md-6 col-lg-4  col-sm-12 mb-4">
       <div class="gallery">
         <div class="product">
           <img src="{{i.image.url}}" alt="Product Image">
           <div class="description">
             <h3>Product: {{i.name}}</h3>
             <p class="price">{{i.discription}}</p>
-            <p class="quantity">Rs: {{i.price}}/ Kg</p>
+            <p class="quantity">Rs: {{i.price}}/ pcs</p>
             <a class="pro" style="padding: 5px;" href="../prodetails/{{i.pk}}">Details</a>
             <a class="pro" style="padding: 5px;" href="../addtocart/{{i.pk}}">Add to cart</a>
           </div>
@@ -281,7 +283,7 @@
           <h5 class="my-3">Product Name: {{i.product.name}}</h5>
           <p class="text-muted mb-1">Price: {{i.product.price}}</p>
           <!-- <a href="../qty_incri/{{i.pk}}" class="btn">+</a> -->
-          <p class="text-muted mb-4">Quantity: {{i.quantity}}kg</p>
+          <p class="text-muted mb-4">Quantity: {{i.quantity}}</p>
           <!-- <a href="../qty_decri/{{i.pk}}" class="btn">-</a> -->
           <div class="d-flex justify-content-center mb-2">
             <a class="btn btn-primary" style="margin: 10px;" href="../buynow/{{i.pk}}">Buy now</a>
