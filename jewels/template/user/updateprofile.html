@@ -146,7 +146,12 @@ button:hover, a:hover {
         <label for="">Name</label>
     <input type="text"  name="name" value="{{data.name}}" placeholder="Enter your name"><br><br>
         <label for="">Phone number</label>
-    <input type="number" name="phonenumber" value="{{data.phonenumber}}" placeholder="Enter your phonenumber"><br><br>
+    <input type="number" name="phonenumber" value="{{data.phonenumber}}" placeholder="Enter your phonenumber">
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+{% endif %}<br><br>
         <label for="">Location</label>
     <input type="text"  name="location" value="{{data.location}}" placeholder="Enter your location"><br><br>
         <label for=""></label>
