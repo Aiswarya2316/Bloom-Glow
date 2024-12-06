@@ -33,6 +33,8 @@ path('contact',views.contact),
 path('service',views.service),
 path('bookinghistry',views.bookinghistry),
 path('search/', views.product_search, name='product_search'),
+path("payment/", views.order_payment, name="payment"),
+path("razorpay/callback/", views.callback, name="callback"),
 # path('submit_feedback/', views.submit_feedback, name='submit_feedback'),
 # path('feedback_list/', views.feedback_list, name='feedback_list'),
 

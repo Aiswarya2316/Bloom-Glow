@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% block content %}
+<div class="col-6 mx-auto" style="margin-top:10%;">
+    <form action="{% url 'payment' %}" method='POST'>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input type="name" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Amount</label>
+          <input type="number" name="amount" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div>
+        <button type="submit" class="btn btn-primary">Pay Now</button>
+        </div>
+      </form>
+</div>
+
+
+
+
+<form method="POST">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    var options = {
+        key: "{{razorpay_key}}",
+        amount: "{{order.amount}}",
+        currency: "INR",
+        name: "{{order.name}}",
+        description: "Test Transaction",
+        image: "https://example.com/your_logo",
+        order_id: "{{order.provider_order_id}}",
+        callback_url: "{{callback_url}}",
+        redirect: true,
+        prefill: {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
+        notes: {
+            "address": "Razorpay Corporate Office"
+        },
+        theme: {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    </script>
+    <input type="hidden" custom="Hidden Element" name="hidden">
+</form>
+{% endblock %}
+
+</body>
+</html>

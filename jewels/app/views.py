@@ -9,6 +9,10 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User,auth
 import datetime
 from django.conf import settings
+from django.http import JsonResponse
+import razorpay
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -368,16 +372,7 @@ def bookinghistry(req):
     return render(req,'shop/bookinghistry.html',{'data':l})
 
 
-# def search_by_category(request):
-#     categories = Category.objects.all()
-#     selected_category = request.GET.get('category')
-#     products = Product.objects.filter(category__name=selected_category) if selected_category else Product.objects.all()
 
-#     return render(request, 'search.html', {
-#         'products': products,
-#         'categories': categories,
-#         'selected_category': selected_category
-#     })
 
 def product_search(request):
     query = request.POST.get('query')  # Get the search term from the request
@@ -388,33 +383,69 @@ def product_search(request):
     return render(request, 'user/product_search.html', {'products': products, 'query': query})
 
 
-# def submit_feedback(request):
-#     if request.method == "POST":
-#         form = FeedbackForm(request.POST)
-#         if form.is_valid():
-#             feedback = form.save(commit=False)
-#             feedback.user= Register.objects.get (Email=request.session['user'])
-#             feedback.save()
-#             return redirect('submit_feedback')
-#     else:
-#         form = FeedbackForm()
-#     return render(request, 'user/submit_feedback.html', {'form': form})
+#####payment#######
+
+def home(request):
+    return render(request, "user/payment.html")
+
+def order_payment(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        razorpay_order = client.order.create(
+            {"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"}
+        )
+        order_id=razorpay_order['id']
+        order = Order.objects.create(
+            name=name, amount=amount, provider_order_id=order_id
+        )
+        order.save()
+        return render(
+            request,
+            "user/payment.html",
+            {
+                "callback_url": "http://" + "127.0.0.1:8000" + "razorpay/callback",
+                "razorpay_key": settings.RAZORPAY_KEY_ID,
+                "order": order,
+            },
+        )
+    return render(request, "user/payment.html")
 
 
-# def feedback_list(request):
-#     feedbacks = Feedback.objects.all().order_by('-submitted_at')
-#     return render(request, 'shop/feedback_list.html', {'feedbacks': feedbacks})
+@csrf_exempt
+def callback(request):
+    def verify_signature(response_data):
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        return client.utility.verify_payment_signature(response_data)
 
+    if "razorpay_signature" in request.POST:
+        payment_id = request.POST.get("razorpay_payment_id", "")
+        provider_order_id = request.POST.get("razorpay_order_id", "")
+        signature_id = request.POST.get("razorpay_signature", "")
+        order = Order.objects.get(provider_order_id=provider_order_id)
+        order.payment_id = payment_id
+        order.signature_id = signature_id
+        order.save()
+        if not verify_signature(request.POST):
+            order.status = PaymentStatus.SUCCESS
+            order.save()
+            return render(request, "callback.html", context={"status": order.status})   # callback giving html page
+            #  or  return redirect(function name of callback giving html page)
+        else:
+            order.status = PaymentStatus.FAILURE
+            order.save()
+            return render(request, "callback.html", context={"status": order.status})  # callback giving html page
+            #  or  return redirect(function name of callback giving html page)
 
-
-# def product_search(request):
-#     query = request.GET.get('query')  # Get the search term from the request
-#     products = []
-#     if query:
-#         # Filter products whose name or description contains the search term (case-insensitive)
-#         products = Product.objects.filter(
-#             Q(name__icontains=query) | Q(discription__icontains=query)
-#         )
-        
-#     return render(request, 'product_search.html', {'products': products, 'query': query})
-
+    else:
+        payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
+        provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
+            "order_id"
+        )
+        order = Order.objects.get(provider_order_id=provider_order_id)
+        order.payment_id = payment_id
+        order.status = PaymentStatus.FAILURE
+        order.save()
+        return render(request, "callback.html", context={"status": order.status})  # callback giving html page
+        #  or  return redirect(function name of callback giving html page)
