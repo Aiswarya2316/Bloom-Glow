@@ -134,5 +134,5 @@ EMAIL_USE_TLS = True  # or False if you're using SSL
 EMAIL_HOST_USER = 'aiswaryapinkey@gmail.com'
 EMAIL_HOST_PASSWORD = 'oorh fdos uyfh lifq'
 
-RAZORPAY_KEY_ID = 'rzp_test_AnFfEMo8V5hY67'
-RAZORPAY_KEY_SECRET = 'pz56GVlDygURN3xpj4MpU9nR'
+RAZORPAY_KEY_ID = 'rzp_test_YkCy6jA2GFlk5F'
+RAZORPAY_KEY_SECRET = 'daOhxZJLVM1ShIlgGtZdLHYt'
