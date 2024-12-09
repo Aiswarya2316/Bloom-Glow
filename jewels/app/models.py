@@ -118,6 +118,7 @@ class Feedback(models.Model):
 class Order(models.Model):
     name = CharField(_("Customer Name"), max_length=254, blank=False, null=False)
     amount = models.FloatField(_("Amount"), null=False, blank=False)
+    product=models.ForeignKey(Product, on_delete=models.CASCADE)
     status = CharField(
         _("Payment Status"),
         default=PaymentStatus.PENDING,
