@@ -1,103 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-<style>
-button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 5px;
-  color: white;
-  /* background-color: #5f54f0; */
-  text-align: center;
-  cursor: pointer;
-  width: 22%;
-  font-size: 18px;
-}
-
-/* nav */
-
-
-
-.nav-link:hover{
-        color: rgb(222, 247, 34);
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
     }
 
+    #nav {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
 
-.navbar .nav-link {
-  transition: color 0.3s; /
-}
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
 
-.navbar .nav-link:hover {
-  color: #ffdd57; /* Change color on hover */
-}
+    .card {
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-.navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.5); /* Light border for toggler */
-}
+    .cart-btn {
+      display: inline-block;
+      background-color: #7DC855;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 12px 30px;
+      transition: all 0.3s;
+    }
 
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom color for toggler icon */
-}
-#nav{
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  height: 80px;
-  /* margin: -20px -20px-20px 0; */
-  margin:10px;
- border-radius: 8px;
-  
-}
+    .cart-btn:hover {
+      background-color: #64af3d;
+    }
 
+    
 
-a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
+    /* Responsive Adjustments */
+    @media only screen and (max-width: 992px) {
+      .card {
+        width: 90%;
+      }
 
-button:hover, a:hover {
-  opacity: 0.7;
-}
-.cart-btn:hover {
-  background-color: #64af3d;
-}
+      #mynavbar {
+        background-color: #2c2727;
+        padding-left: 10px;
+      }
+    }
 
-
-
-.container {
-  justify-items: center;
-}
-.cart-btn {
-  display: inline-block;
-  background-color: #7DC855;
-  border-radius: 6px;
-  font-size: 16px;
-  color: #FFFFFF;
-  text-decoration: none;
-  margin-right: 40px;
-  padding: 12px 30px;
-  transition: all .5s;
-}
-@media only screen and (max-width:  992px) {
-            #mynavbar {
-            background-color: #2c2727;
-            padding-left:10px;
-
-            }
-}
-</style>
+    @media only screen and (max-width: 576px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-
+  <!-- Navbar -->
   <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-      <a href="../userhome" class="logo"  >
+      <a href="../userhome" class="logo">
         <img src="../static/logo.png" alt="logo" width="100px">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -105,82 +77,39 @@ button:hover, a:hover {
       </button>
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../userviewproduct">View Product</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../orderdetails">Orderdetails</a>
-          </li>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../aboutus">Aboutus</a>
-        </li>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../service">Service</a>
-      </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../logout">Logout</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="../profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="../userviewproduct">View Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="../orderdetails">Order Details</a></li>
+          <li class="nav-item"><a class="nav-link" href="../aboutus">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="../service">Service</a></li>
+          <li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
         </ul>
-        
-  
-         <!-- Social Media Icons -->
-         <ul class="navbar-nav d-flex">
-          <!-- Twitter Icon -->
-          <li class="nav-item">
-            <a class="nav-link" href="../user_view_cart" target="_blank">
-              <i class="fas fa-shopping-cart"></i>
-            </a>
-          </li>
-          
-          <!-- Facebook Icon -->
-          <li class="nav-item">
-            <a class="nav-link" href="https://facebook.com" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          
-          <!-- Instagram Icon -->
-          <li class="nav-item">
-            <a class="nav-link" href="https://instagram.com" target="_blank">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item"><a class="nav-link" href="../user_view_cart" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
         </ul>
-  
-  
-    <form class="d-flex" method="post" action="{% url 'product_search' %}">
-      {% csrf_token %}
-      <input type="text" class="form-control me-2" name="query" placeholder="Search for products...">
-      <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-  
+        <form class="d-flex" method="post" action="{% url 'product_search' %}">
+          {% csrf_token %}
+          <input type="text" class="form-control me-2" name="query" placeholder="Search for products...">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
       </div>
     </div>
   </nav>
-  
 
-<h2 style="text-align:center">My Data </h2>
-
-
-
-  <div class="container mt-3">
+  <!-- Card Section -->
+  <div class="container">
+    <h2>My Data</h2>
     <div class="card" style="width:300px">
-      <img class="card-img-top" src="static/unnamed.webp" alt="Card image" style="width:100%">
+      <img class="card-img-top img-fluid" src="static/unnamed.webp" alt="Card image">
       <div class="card-body">
         <h4 class="card-title">Name: {{data.name}}</h4>
-        <p class="card-text">Phonenum: {{data.phonenumber}}</p>
-        <p>Location: {{data.location}}</p><br><br>
-        <a href="../upload" class="cart-btn">update</a>
-
+        <p class="card-text">Phone Number: {{data.phonenumber}}</p>
+        <p>Location: {{data.location}}</p>
+        <a href="../upload" class="cart-btn">Update</a>
       </div>
     </div>
   </div>
-
-
 </body>
 </html>
