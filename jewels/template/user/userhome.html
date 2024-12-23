@@ -17,11 +17,46 @@
       background-color: #f8f8f8;
     }
 
-    #nav {
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      margin-bottom: 20px;
-      border-radius: 8px;
-    }
+   /* Reduce Navbar Height */
+#nav {
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border: none;
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+  font-size: 14px; /* Reduced font size for better fit */
+}
+
+/* Navbar Logo */
+.navbar-brand img {
+  width: 130px; /* Reduce logo size */
+}
+
+/* Adjust Navbar in Mobile View */
+@media only screen and (max-width: 768px) {
+  #nav {
+    padding: 0.25rem 0;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.5rem;
+    font-size: 13px;
+  }
+
+  .navbar-brand img {
+    width: 110px;
+  }
+}
+
 
 /* carousel */
 

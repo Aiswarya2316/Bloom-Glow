@@ -93,16 +93,19 @@
     @media only screen and (max-width:  992px) {
             #mynavbar {
             background-color: #2c2727;
+        padding-left: 10px;
+
 
             }
 }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <nav id="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-      <a href="../userhome" class="navbar-brand">
-        <img src="../static/logo.png" alt="logo" width="100">
+      <a href="../userhome" class="logo">
+        <img src="../static/logo.png" alt="logo" width="100px">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
         <span class="navbar-toggler-icon"></span>
@@ -115,6 +118,11 @@
           <li class="nav-item"><a class="nav-link" href="../aboutus">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="../service">Service</a></li>
           <li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
+        </ul>
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item"><a class="nav-link" href="../user_view_cart" target="_blank"><i class="fas fa-shopping-cart"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
         </ul>
         <form class="d-flex" method="post" action="{% url 'product_search' %}">
           {% csrf_token %}
