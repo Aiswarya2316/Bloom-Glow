@@ -25,8 +25,6 @@
 
 /* carousel */
 
-
-
  .carousel-overlay {
   position: absolute;
   top: 0%; 
@@ -44,17 +42,6 @@
   text-align:left; 
   padding: 20px; 
 }
-/*
-#carouselh2{
-  margin: 80px 200px 0 50px; 
-  font-size:3cap;
-}
-
-#carouselbtn {
-  padding: 10px 20px;
-  margin: 100px 0 0 300px; 
-} */
-
 
 /* General Carousel Styles */
 .carousel-inner img {
@@ -82,23 +69,6 @@
   border-radius: 50%;
   padding: 10px;
 }
-
-/* Overlay Styles */
-/* .carousel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 50%;
-  background: linear-gradient(90deg, rgba(51, 18, 18, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 50px;
-  color: white;
-  z-index: 1;
-} */
 
 .carousel-content h2 {
   margin: 50px;
@@ -151,45 +121,6 @@
   margin: 0 auto;
 }
 
-
-/* product display */
- 
-/* .product {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 250px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-}
-.product img {
-  min-width: 250px;
-  min-height: 300px;
-  max-width: 250px;
-  max-height: 300px;
-
-    display: block;
-}
-.product .description {
-    padding: 15px;
-}
-.product h3 {
-    font-size: 18px;
-    margin: 0 0 10px 0;
-    color: #333;
-}
-.product .price {
-    font-size: 16px;
-    color: #e67e22;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.product .details {
-    font-size: 14px;
-    color: #777;
-} */
-
 /* order details */
 
 #order_dtls {
@@ -218,8 +149,7 @@
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   background-color: #f8f8f8; 
-  /* max-height: 500px; */
-  /* margin: 300px; */
+  
 }
 .order-left {
   margin-right: 15px;
@@ -241,8 +171,6 @@
   /* margin: 10px; */
 }
 
-
-
 /* other */
 
 h2{
@@ -250,9 +178,6 @@ h2{
     text-shadow: #301803;
     font-style:italic ;
 }
-
-
-
 
 
 /* Container Styling */
@@ -344,13 +269,6 @@ h2 {
   background-color: #0056b3;
 }
 
-
-
-
-
-
-
-
     /* Ensure container sections have clear floating */
 .container {
   width: 100%;
@@ -377,44 +295,23 @@ h2 {
 
 
 @media only screen and (max-width: 992px) {
-        /* #carouselh2 {
-            width: 200px;
-            margin-left: 25%;
-            top:-400px;
-            font-size: large;
-        } */
-        /* #carouselbtn {
-          margin: 100px 0 0 130px; 
-        } */
         #mynavbar {
           background-color: #2c2727;
-          padding: 10px;
-
         }
     }
     @media only screen and (max-width: 768px) {
-        /* #carouselh2 {
-            width: 200px;
-            top:-240px;
-            font-size: medium;
-        } */
         h3 input[type=buttont] {
             margin-left: 25%;
             margin-top: 20px;
         }
-        /* #carouselbtn {
-          margin: 100px 0 0 100px; 
-        } */
+        
         #order_dtls{
           min-height: 500px;
         }
         #cart_dtls{
           height: 650px;
         }
-        #mynavbar {
-          background-color: #2c2727;
-
-        }
+       
         .carousel-inner img {
           height:300px
         }
@@ -527,20 +424,22 @@ h2 {
   </div>
 
   <!-- Slideshow -->
+  
   <div class="carousel-inner">
+    <a href="../user_view_cart">
     <div class="carousel-item active">
       <img src="static/bloom-and-shine-this-monsoon.webp" class="d-block w-100" alt="Monsoon Theme">
       <div class="carousel-overlay">
-        
-        <a href="../user_view_cart" id="carouselbtn" class="btn btn-primary">Shop Now</a>
       </div>
     </div>
+  </a>
+  <a href="../userviewproduct">
     <div class="carousel-item">
       <img src="static/1700845924089-Mobile_Browse_Page_Widget-v2.webp" class="d-block w-100" alt="Deals and Offers">
       <div class="carousel-overlay">
-        <a href="../userviewproduct" id="carouselbtn" class="btn btn-primary">Explore Now</a>
       </div>
     </div>
+  </a>
   </div>
 
   <!-- Controls -->
